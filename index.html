@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AIwise — Learn to use AI responsibly</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="code-gate" id="codeGate">
+  <div class="code-gate-card">
+    <h2>Enter your anonymous code</h2>
+    <p>This is a research matching identifier, not a login or password and no account is created and nothing is authenticated. Enter the exact anonymous code your researcher gave you at consent, and don't create your own version. It links your pretest, posttest, Responsible Use Scenarios, My AI Rules, and Usability Evaluation together, without your name.</p>
+    <input type="text" id="codeInput" placeholder="e.g. AIWISE-07" autocomplete="off" />
+    <div class="error" id="codeError">Please enter your code to continue.</div>
+    <button class="btn btn-primary" id="codeSubmit" style="width:100%">Continue</button>
+  </div>
+</div>
+
+<nav>
+  <button class="logo" onclick="showSection('home')">AI<span>wise</span></button>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navlinks">Menu</button>
+</nav>
+<div class="navlinks" id="navlinks">
+  <button class="navlink" onclick="showSection('home')">Home</button>
+  <button class="navlink" onclick="showSection('module-1')">Module 1 · What is AI?</button>
+  <button class="navlink" onclick="showSection('module-2')">Module 2 · Responsible Use</button>
+  <button class="navlink" onclick="showSection('module-3')">Module 3 · Fact-Check</button>
+  <button class="navlink" onclick="showSection('module-4')">Module 4 · Privacy</button>
+  <button class="navlink" onclick="showSection('ai-rules')">My AI Rules</button>
+  <button class="navlink" onclick="showSection('ai-tools')">AI Tools directory</button>
+  <button class="navlink" onclick="showSection('about')">About this study</button>
+</div>
+
+<div class="page-section active" id="home">
+  <header class="hero" style="margin: -28px -20px 0; border-radius: 0;">
+    <span class="eyebrow">For CCIS IT students at University of Antique</span>
+    <h1>Use AI with confidence — not by accident.</h1>
+    <p>AIwise is a free, four-module guide to using generative AI responsibly in your coursework. Built in Taglish, made for slow connections, based on real student situations.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="showSection('module-1')">Start Module 1: What is AI?</button>
+      <button class="btn btn-secondary" onclick="goToForm('pretest')">Take the pretest first</button>
+    </div>
+  </header>
+
+  <div class="trust" style="margin: 0 -20px;">
+    <span>🔒</span>
+    <span>
+      <strong>How this works:</strong> Your anonymous code is a research matching identifier, not a login, and it links your pretest, posttest, Responsible Use Scenarios, My AI Rules, and Usability Evaluation entries without using your name. Form and survey responses go through Google Forms, and My AI Rules entries are logged in Firebase; both are described in your consent form.
+      <span class="code-note" id="codeStatus"></span>
+    </span>
+  </div>
+
+  <section class="modules" id="modules">
+    <div class="section-label">Four short modules</div>
+    <h2>Pick up where you left off</h2>
+
+    <button class="module-card" onclick="showSection('module-1')">
+      <span class="module-num">01</span>
+      <div><h3>What is AI?</h3><p>How generative AI actually generates answers in plain Taglish, no jargon.</p></div>
+    </button>
+
+    <button class="module-card" onclick="showSection('module-2')">
+      <span class="module-num">02</span>
+      <div><h3>Responsible Use</h3><p>What counts as fair use in coursework, and where the line actually is.</p></div>
+    </button>
+
+    <button class="module-card" onclick="showSection('module-3')">
+      <span class="module-num">03</span>
+      <div><h3>Fact-Check</h3><p>Practice catching AI mistakes before they end up in your paper.</p></div>
+    </button>
+
+    <button class="module-card" onclick="showSection('module-4')">
+      <span class="module-num">04</span>
+      <div><h3>Privacy</h3><p>What happens to what you type into a chatbot, and how to protect it.</p></div>
+    </button>
+
+    <button class="module-card" onclick="showSection('ai-rules')" style="border-color: var(--gold);">
+      <span class="module-num" style="color: var(--gold);">✓</span>
+      <div><h3>My AI Rules</h3><p>After the four modules: write your own personal AI-use guidelines.</p></div>
+    </button>
+  </section>
+
+  <section class="why">
+    <div class="why-card">
+      <h2>Why this exists</h2>
+      <p>Most AI guidance wasn't written for Filipino students on limited data plans, switching between English and Filipino mid-sentence. AIwise was built specifically for that reality — and it only works because students like you help test it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <button class="footlink" onclick="showSection('ai-tools')">AI Tools directory</button>
+      <button class="footlink" onclick="showSection('about')">About this study</button>
+      <button class="footlink" onclick="goToForm('consent')">Consent form</button>
+      <button class="footlink" onclick="goToForm('responsibleUse')">Responsible Use Survey</button>
+      <button class="footlink" onclick="goToForm('posttest')">Posttest</button>
+      <button class="footlink" onclick="goToForm('usability')">Usability Evaluation</button>
+      <button class="footlink" onclick="showSection('about')">Contact the researcher</button>
+    </div>
+    <p class="fine">AIwise is part of an undergraduate research study. Participation is voluntary, and you may stop at any time without penalty. See the consent form for full details on what data is collected and how it's used.</p>
+  </footer>
+</div>
+
+<div class="page-section" id="module-1">
+  <button class="back-btn" onclick="showSection('home')">Back to modules</button>
+  <div class="module-progress"><span class="done"></span><span></span><span></span><span></span></div>
+  <div class="section-label">Module 01</div>
+  <h2>What is AI?</h2>
+  <div class="body-copy">
+    <p>Narito ang isang bagay na madalas hindi alam ng mga user: wala talagang "iniisip" ang ChatGPT in the same way na nag-iisip tayo. Ang nangyayari lang ay pini-predict niya kung anong salita ang most likely na susunod based sa halos buong internet na na-feed sa kanya noong tine-train siya. Kung gusto mo ng analogy, isipin mo nalang siya bilang isang tao na nagbasa ng napakaraming libro in a very fast manner, pero hindi naman talaga na-absorb ang lahat, kaya kahit anong itanong mo, may sagot siya, pero minsan dahil sa bilis lang ng pagbasa, hindi na nava-validate kung tama ba talaga.</p>
+    <p>Dito rin papasok ang problema: pareho lang ang confidence niya whether tama o mali ang lumalabas na sagot. Walang built-in na "hmm, sure ka ba dito?" sa loob niya. Ang tanging sinusukat lang ay kung "kumakapit" ba ang sagot sa pattern na nakita niya before at hindi kung totoo nga ba ito.</p>
+    <div class="info-box"><strong>Bottom line:</strong> Fluent ≠ correct. Kasing-linaw at kasing confident ang tono niya whether tama or mali, kaya huwag basta maniwala agad, lalo na pagdating sa facts, numbers, or citations.</div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="showSection('home')">Back</button>
+    <button class="btn btn-primary" onclick="showSection('module-2')">Next: Responsible Use</button>
+  </div>
+</div>
+
+<div class="page-section" id="module-2">
+  <button class="back-btn" onclick="showSection('home')">Back to modules</button>
+  <div class="module-progress"><span class="done"></span><span class="done"></span><span></span><span></span></div>
+  <div class="section-label">Module 02</div>
+  <h2>Responsible Use</h2>
+  <div class="body-copy">
+    <p>May malaking agwat sa pagitan ng "ginamit ko lang as tulong" at "AI na mismo ang gumawa nito". "Halos lahat ng gray area dito ay napupunta sa tatlong sitwasyon na madalas talagang nangyayari:</p>
+    <div class="info-box">
+      <strong>1. Brainstorming vs. Buong Sanaysay</strong><br>
+      ✅ Okay: Hingin sa AI ang ideas o outline bago ka magsulat.<br>
+      ❌ Hindi okay: Ipasulat sa AI ang buong essay tapos ipasa mo as if ikaw ang gumawa.
+    </div>
+    <div class="info-box">
+      <strong>2. Grammar Check vs. Code na Hindi Mo Ginawa</strong><br>
+      ✅ Okay: Gamitin ang AI para i-check ang grammar ng report mo.<br>
+      ❌ Hindi okay: I-submit ang code na AI-generated as sarili mong ginawa nang wala kang ideya paano ito gumana.
+    </div>
+    <div class="info-box">
+      <strong>3. Pag-unawa vs. Pag-Copy</strong><br>
+      ✅ Okay: Hingin sa AI na ipaliwanag ulit ang isang mahirap na konsepto at pagkatapos ay ipaliwanag ito sa sarili mong pananalita.<br>
+      ❌ Hindi okay: I-copy-paste ang paliwanag ng AI diretso sa sagutan mo, word-for-word.
+    </div>
+    <p>May isang tanong lang naman talaga na kailangan mong sagutin sa sarili mo: kung tatanungin ka ng propesor mo kung paano mo ginawa ito, may masasabi ka ba nang hindi ka mag-aalangan? Kung wala, malamang tumawid ka na sa linya kanina pa.</p>
+    <div class="info-box" style="margin-top:20px;">
+      <strong>AI Use Decision Tree. Tanungin ang sarili mo bago gumamit ng AI sa isang requirement:</strong>
+      <ol style="margin: 10px 0 0; padding-left: 18px; line-height:1.6;">
+        <li>Pinapayagan ba ito ng syllabus o sinabi mismo ng instructor? Kung hindi sigurado, itanong muna bago gamitin.</li>
+        <li>Ano talaga ang gagamitin mo sa AI? brainstorming, pag-check ng grammar, o buong sagot? Mas malapit sa "buong sagot," mas malapit ka sa hindi okay.</li>
+        <li>Kaya mo bang i-verify o ipaliwanag ang output nang wala ang AI sa tabi mo? Kung hindi, huwag muna isumite.</li>
+        <li>Kailangan bang idisclose na gumamit ka ng AI dito? Kapag may pagdududa, idisclose na lang, at mas ligtas.</li>
+      </ol>
+    </div>
+    <button class="btn btn-outline-teal" style="margin-bottom: 12px;" onclick="document.getElementById('m2tree').style.display='block'; this.style.display='none';">Try it: Suriin ang isang scenario</button>
+    <div class="info-box" id="m2tree" style="display:none;">
+      <strong>Scenario:</strong> Gagamit ka ng AI para gumawa ng buong lab report bago ka pa magsimula, at hindi ka sure kung pinapayagan ito ng instructor.<br><br>
+      1. Hindi sigurado kung pinapayagan → dapat itanong muna.<br>
+      2. Buong report ang gagawin ng AI, hindi lang outline → papalapit na sa "hindi okay."<br>
+      3. Kung hindi mo maipapaliwanag ang laman ng report na sinasabi mong "ginawa mo," huwag mo muna itong isumite.<br>
+      4. May pagdududa sa disclosure → mas ligtas na sabihin sa instructor na gumamit ka ng AI.<br><br>
+      <strong>Konklusyon:</strong> Dalawa o higit pang "red flag" ang lumabas dito,kaya dapat munang kumonsulta sa instructor bago ituloy.
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="showSection('module-1')">Back</button>
+    <button class="btn btn-primary" onclick="showSection('module-3')">Next: Fact-Check</button>
+  </div>
+</div>
+
+<div class="page-section" id="module-3">
+  <button class="back-btn" onclick="showSection('home')">Back to modules</button>
+  <div class="module-progress"><span class="done"></span><span class="done"></span><span class="done"></span><span></span></div>
+  <div class="section-label">Module 03</div>
+  <h2>Fact-Check</h2>
+  <div class="body-copy">
+    <p>May pangalan pala ang ganitong klase ng pagkakamali, at tinatawag itong <strong>"AI hallucination."</strong> Nangyayari ito kapag nag-iimbento ang AI ng impormasyon na hindi naman totoo, pero sinasabi niya ito nang buong confidence, kadalasan halo-halo pa sa mga totoong detalye. Kaya nga mas mahirap itong mahuli kaysa sa isang sagot na mali-mali agad sa unang tingin.</p>
+    <p>Gusto mo bang subukan? Basahin muna itong sagot sa ibaba na ginawa ng isang AI chatbot. May isang factual error dito. Huwag mo agad i-tap ang "Reveal the mistake" subukan mo munang hanapin mismo.</p>
+    <div class="info-box quote">
+      "The Philippines gained independence from Spain in 1898 and became a fully sovereign nation that same year. Jose Rizal, the national hero, served as the country's first president before being executed in 1896."
+    </div>
+    <button class="btn btn-outline-teal" style="margin-bottom: 12px;" onclick="document.getElementById('m3reveal').style.display='block'; this.style.display='none';">Reveal the mistake</button>
+    <div class="info-box" id="m3reveal" style="display:none;">
+      <strong>Ang error:</strong> Hindi naging pangulo si Jose Rizal, siya ay manunulat at repormista na na-execute noong 1896, bago pa man mangyari ang sinasabing 1898 independence. Si Emilio Aguinaldo ang naging unang pangulo. At kahit sabihing "sovereign" na noong 1898, mas komplikado pa rin talaga ang totoong ang tunay na kasaysayang, dahil sinundan pa ito ng pananakop ng mga Amerikano.<br><br>
+      <strong>Bakit ito nangyayari:</strong> Pinaghalo lang ng AI ang mga totoong detalye "Rizal, 1896, 1898" sa isang connection na mali naman pala. Kaya ito ay nakakalito, "off by a little" lang kung titingnan, pero mas mapanganib pa nga kaysa sa sagot na obvious agad na mali. Ito mismo yung tinatawag na AI hallucination.
+    </div>
+    <p>Ngayon, subukan naman natin ang ibang klase ng hallucination, yung mas mahirap mahuli dahil mukhang "academic" o "technical" ang datingan.</p>
+    <div class="info-box quote">
+      "Studies show that using AI tools for at least 30 minutes a day increases students' GPA by an average of 0.5 points (Cruz, 2022)."
+    </div>
+    <button class="btn btn-outline-teal" style="margin-bottom: 12px;" onclick="document.getElementById('m3reveal2').style.display='block'; this.style.display='none';">Reveal the mistake</button>
+    <div class="info-box" id="m3reveal2" style="display:none;">
+      <strong>Ang error:</strong> Walang matatagpuang totoong study na "Cruz, 2022" na nagsasabi mismo nito, at kung hahanapin mo sa Google Scholar o sa library database ng iyong paaralan, wala kang makikitang eksaktong source na tumutugma. Malamang inimbento lang ng AI ang buong citation.<br><br>
+      <strong>Bakit ito nangyayari:</strong> Gumagawa ang AI ng mga citation na "kamukha" ng totoong academic format. May pangalan, at may taon a kaya mukhang legitimate agad. Ito ang dahilan kung bakit dapat mo palaging i-verify kung existing nga ba ang isang binanggit na source bago mo ito isama sa sarili mong papel.
+    </div>
+    <div class="info-box quote">
+      "It's completely safe to hardcode your database password directly in your JavaScript file, since only you can see your own code."
+    </div>
+    <button class="btn btn-outline-teal" style="margin-bottom: 12px;" onclick="document.getElementById('m3reveal3').style.display='block'; this.style.display='none';">Reveal the mistake</button>
+    <div class="info-box" id="m3reveal3" style="display:none;">
+      <strong>Ang error:</strong> Mali ito. Kahit ikaw lang ang nakakakita ng code habang ginagawa mo pa ito, sa sandaling i-push mo ang code sa isang public repository (tulad ng GitHub) o i-deploy sa isang website, kahit sino ay puwedeng makakita ng hardcoded password sa pamamagitan lang ng pagtingin sa page source o sa commit history.<br><br>
+      <strong>Bakit ito nangyayari:</strong> Mag-iingat ka rin sa mga sagot ng AI tungkol sa coding at security, lalo na kapag ang sagot ay "okay lang 'yan" sa isang bagay na dapat sensitive. Kahit code-related at "technical" ang datingan, hindi ibig sabihin ay tama na agad ito.
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="showSection('module-2')">Back</button>
+    <button class="btn btn-primary" onclick="showSection('module-4')">Next: Privacy</button>
+  </div>
+</div>
+
+<div class="page-section" id="module-4">
+  <button class="back-btn" onclick="showSection('home')">Back to modules</button>
+  <div class="module-progress"><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span></div>
+  <div class="section-label">Module 04</div>
+  <h2>Privacy</h2>
+  <div class="body-copy">
+    <p>Isang bagay na hindi masyadong napag-uusapan: kapag na-send mo na ang isang message sa chatbot, hindi na basta nawawala 'yon. Maraming AI companies ang nag-iimbak ng mga conversation, minsan ginagamit ito para i-improve pa ang model, minsan naman kinukuha lang kapag may kailangang i-review, tulad ng report ng abuse. Kaya sa madaling salita, mas ligtas kung ituturing mong parang nababasa ito ng ibang tao, kahit "private chat" ang datingan.</p>
+    <p><strong>Pero mag-ingat sa paggeneralize:</strong> iba-iba ang patakaran ng bawat AI service kung gaano katagal iniimbak ang datos, kung ginagamit ba ito para sanayin pa ang model, at kung may opt-out ka o hindi. Bago mo ipagpalagay na pareho lang ang lahat ng chatbot, tingnan muna ang kasalukuyang privacy/data policy ng partikular na service na ginagamit mo, kasama ang uri ng account mo (free vs. paid) — dahil nagbabago ito paglipas ng panahon.</p>
+    <div class="info-box">
+      <strong>Iwasan i-type sa AI chatbot:</strong>
+      <ul style="margin: 8px 0 0; padding-left: 18px;">
+        <li>ID numbers (student ID, passport, national ID)</li>
+        <li>Addresses o contact info — sarili o ng iba</li>
+        <li>Personal information ng ibang tao (classmate, kaibigan, pamilya)</li>
+        <li>Exam content na under NDA o confidential agreement</li>
+        <li>Passwords o account credentials</li>
+      </ul>
+    </div>
+    <p><strong>Kung gusto mo ng mabilisang sukatan:</strong> kung ayaw mo itong makita ng isang stranger, huwag mo na lang itong i-type sa chatbot. Ganoon lang kasimple.</p>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="showSection('module-3')">Back</button>
+    <button class="btn btn-primary" onclick="showSection('ai-rules')">Finish: My AI Rules</button>
+  </div>
+</div>
+
+<div class="page-section" id="ai-rules">
+  <button class="back-btn" onclick="showSection('home')">Back to home</button>
+  <div class="section-label">Wrap-up</div>
+  <h2>My AI Rules</h2>
+  <div class="body-copy">
+    <p>Now that you've been through all four modules, write 3–5 personal rules for how you'll use AI tools in your coursework going forward. This is saved under your anonymous code, not graded, and not shared with your professors.</p>
+  </div>
+  <textarea class="rules-input" id="rulesInput" placeholder="e.g. 1. I will always fact-check anything AI gives me before using it in an assignment.&#10;2. I won't paste my classmates' work or personal info into a chatbot.&#10;3 ..."></textarea>
+  <button class="btn btn-teal" id="saveRulesBtn" style="width:100%;">Save my AI rules</button>
+  <div class="save-status" id="saveStatus"></div>
+  <div class="info-box" style="margin-top:20px;">Finished everything? <button class="footlink" style="color:var(--teal); font-weight:700;" onclick="goToForm('posttest')">Take the posttest</button></div>
+</div>
+
+<div class="page-section" id="ai-tools">
+  <button class="back-btn" onclick="showSection('home')">Back to home</button>
+  <div class="section-label">Reference</div>
+  <h2>AI Tools directory</h2>
+  <div class="body-copy"><p>Mga kategorya ng AI tools na madalas gamitin ng IT students — iilan lang na halimbawa bawat kategorya, kasama ang pinaka-magandang gamit at ang dapat pag-ingatan.</p></div>
+
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Writing &amp; Research Assistants</h3>
+  <div class="ai-tool-card"><h4>ChatGPT</h4><p><strong>Best for:</strong> brainstorming logic, explaining complex concepts, debugging errors, and drafting documentation. <em>Pero</em> mag-ingat kasi pwede siyang mag-hallucinate ng maling solution o magbigay ng outdated syntax, kaya always i-test maigi ang code.</p></div>
+  <div class="ai-tool-card"><h4>Claude</h4><p><strong>Best for:</strong> long-context understanding, reading whole thesis/capstone papers, and safe, structured explanations. <em>Pero</em> mas conservative siya at minsan nagre-refuse sa coding tasks na kaya naman, kaya i-rephrase mo lang yung prompt nang maayos.</p></div>
+  <div class="ai-tool-card"><h4>Perplexity</h4><p><strong>Best for:</strong> real-time research with cited sources and quick literature review. <em>Pero</em> hindi lahat ng sources ay credible at minsan outdated yung link, kaya i-verify mo pa rin sa original site.</p></div>
+
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Coding Assistants</h3>
+  <div class="ai-tool-card"><h4>GitHub Copilot</h4><p><strong>Best for:</strong> real-time code auto-completion and boilerplate generation directly inside your IDE. <em>Pero</em> minsan nagbibigay siya ng insecure patterns o copyrighted logic, kaya i-review mo lahat ng snippets at never mag-input ng API keys or credentials.</p></div>
+  <div class="ai-tool-card"><h4>Cursor</h4><p><strong>Best for:</strong> AI-native coding IDE and full-project refactoring. <em>Pero</em> mabilis maubos yung fast requests at pwede niyang baguhin buong codebase pag di binantayan, kaya always check yung diff bago i-accept.</p></div>
+
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Productivity &amp; Communication</h3>
+  <div class="ai-tool-card"><h4>Grammarly (GrammarlyGO)</h4><p><strong>Best for:</strong> refactoring tone, polishing technical write-ups, and drafting clear peer communications. <em>Pero</em> pwede niyang i-flatten yung importanteng technical jargon o ma-misinterpret yung technical intent, kaya i-manual review mo lahat ng suggested edits.</p></div>
+  <div class="ai-tool-card"><h4>Gemini</h4><p><strong>Best for:</strong> multimodal reasoning, analyzing images/code/docs at the same time, and Google Workspace integration. <em>Pero</em> minsan inconsistent yung citation at nagha-hallucinate din ng sources, kaya i-double check mo yung facts bago gamitin.</p></div>
+
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Creative &amp; App-Building Tools</h3>
+  <div class="ai-tool-card"><h4>Higgsfield</h4><p><strong>Best for:</strong> AI video generation and motion control for creative capstone demos. <em>Pero</em> may limit sa free credits at minsan inconsistent yung character movement, kaya planuhin mo yung prompts para di masayang credits.</p></div>
+  <div class="ai-tool-card"><h4>Lovable</h4><p><strong>Best for:</strong> turning prompts into full-stack websites instantly without coding from scratch. <em>Pero</em> messy yung generated code at mahirap i-maintain long-term, kaya pang-prototype lang, hindi pang-final deployment.</p></div>
+  <div class="ai-tool-card"><h4>Emergent</h4><p><strong>Best for:</strong> building AI agents and automating workflows. <em>Pero</em> complex yung setup at may learning curve sa chaining, kaya start ka muna sa simple workflow bago mag-advanced.</p></div>
+
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Career &amp; Business Tools</h3>
+  <div class="ai-tool-card"><h4>Zety (Resume AI)</h4><p><strong>Best for:</strong> auto-generating ATS-friendly resumes and application letters for OJT. <em>Pero</em> generic yung output pag di mo in-edit, kaya i-customize mo pa rin para di halatang AI.</p></div>
+  <div class="ai-tool-card"><h4>Shopify Magic / Shopify AI</h4><p><strong>Best for:</strong> auto-generating product descriptions, store setup, and e-commerce content. <em>Pero</em> generic yung copy at hindi optimized for local market, kaya i-edit mo pa rin para mag-fit sa target customers mo.</p></div>
+
+  <div class="info-box" style="margin-top:20px;"><strong>Tandaan:</strong> Mabilis magbago ang features, presyo, at patakaran ng mga AI tools na ito. Laging i-check ang kasalukuyang documentation ng provider bago umasa dito para sa mahahalagang detalye.</div>
+</div>
+
+<div class="page-section" id="about">
+  <button class="back-btn" onclick="showSection('home')">Back to home</button>
+  <div class="section-label">About</div>
+  <h2>About this study</h2>
+  <div class="body-copy">
+    <p>AIwise is part of an undergraduate research study on AI literacy among IT students in the College of Computer and Information Science (CCIS) at the University of Antique. The study looks at whether using this website changes students' AI literacy knowledge and their self-reported habits around responsible AI use, through a four-week pretest-posttest design.</p>
+    <p>This site was designed and built by [Your Name], an IT student at CCIS, University of Antique, under the guidance of [Adviser's Name]. Participation in the associated research study is entirely voluntary — see the Consent form for full details on what's involved and how your data is protected.</p>
+    <p>Questions about the study? Reach [Your Name] at [your email/contact].</p>
+  </div>
+</div>
+
+<!-- Help Assistant: a scripted FAQ helper, not a real AI chatbot. It keyword-matches
+     your question against AIwise's own module content and answers only from that —
+     no API calls, no external AI model, no data sent or stored anywhere. -->
+<button class="help-fab" id="helpFab" aria-label="Open help assistant" onclick="toggleHelp()">💬</button>
+<div class="help-panel hidden" id="helpPanel">
+  <div class="help-panel-header">
+    <span>AIwise Help</span>
+    <button onclick="toggleHelp()" aria-label="Close">✕</button>
+  </div>
+  <div class="help-sub">Sagot lang ito batay sa nilalaman ng site, hindi ito totoong AI chatbot.</div>
+  <div class="help-log" id="helpLog"></div>
+  <div class="help-chips" id="helpChips"></div>
+  <div class="help-input-row">
+    <input type="text" id="helpInput" placeholder="Magtanong tungkol sa AIwise..." onkeydown="if(event.key==='Enter') askHelp()" />
+    <button onclick="askHelp()">Send</button>
+  </div>
+</div>
+
+<script type="module" src="firebase-init.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
