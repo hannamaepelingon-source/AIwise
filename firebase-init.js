@@ -51,4 +51,3 @@ window.saveAIRulesToFirebase = async function (code, rulesText) {
 };
 
 
-
