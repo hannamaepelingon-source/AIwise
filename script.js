@@ -105,35 +105,35 @@ document.getElementById("saveRulesBtn").addEventListener("click", async () => {
 // enough, it says so and points to the instructor instead of guessing.
 const helpFAQ = [
   { keys: ["paano gumagana ang code", "anong ginagawa ng code", "ano ang anonymous code", "para saan ang code", "gumagana ang anonymous"],
-    a: "Ang anonymous code mo ay hindi login o password — isang matching identifier ito na nagdurugtong sa lahat ng sagot mong Google Form (pretest, posttest, Responsible Use Scenarios, Usability Evaluation) at sa iyong My AI Rules entries sa Firebase, nang hindi ginagamit ang pangalan mo. Ibinigay ito sa iyo noong pumirma ka ng consent form, kaya huwag itong baguhin o gawan ng sariling version." },
+    a: "Ang anonymous code mo ay hindi login o password, isang matching identifier ito na nagdurugtong sa lahat ng sagot mong Google Form (pretest, posttest, Responsible Use Scenarios, Usability Evaluation) at sa iyong My AI Rules entries sa Firebase, nang hindi ginagamit ang pangalan mo. Ibinigay ito sa iyo noong pumirma ka ng consent form, kaya huwag itong baguhin o gawan ng sariling version." },
   { keys: ["help assistant", "bubble chat", "chat bubble", "paano gumamit ng help", "ano ang chat na ito", "ano itong chat", "chat guide"],
-    a: "Ang help bubble na ito ay simpleng FAQ assistant lang, hindi totoong AI chatbot. Kino-keyword match lang nito ang tanong mo sa mga paksang nasa AIwise mismo (mga module, code, My AI Rules, atbp.) at sumasagot base dito. Kapag walang tumugmang paksa, sasabihin nito nang diretso at ire-refer ka sa instructor — hindi ito gagawa ng bagong sagot na wala sa site." },
+    a: "Ang help bubble na ito ay simpleng FAQ assistant lang, hindi totoong AI chatbot. Kino-keyword match lang nito ang tanong mo sa mga paksang nasa AIwise mismo (mga module, code, My AI Rules, atbp.) at sumasagot base dito. Kapag walang tumugmang paksa, sasabihin nito nang diretso at ire-refer ka sa instructor at hindi ito gagawa ng bagong sagot na wala sa site." },
   { keys: ["sign in", "mag-sign in", "paano mag", "log in", "gumamit ng code"],
-    a: "I-type mo lang ang eksaktong anonymous code na ibinigay sa iyo sa consent form, tapos pindutin ang Continue. Hindi ito login o password — matching identifier lang ito para maiugnay ang iyong pretest, posttest, Responsible Use Scenarios, My AI Rules, at Usability Evaluation nang hindi gamit ang pangalan mo." },
+    a: "I-type mo lang ang eksaktong anonymous code na ibinigay sa iyo sa consent form, tapos pindutin ang Continue. Hindi ito login o password, matching identifier lang ito para maiugnay ang iyong pretest, posttest, Responsible Use Scenarios, My AI Rules, at Usability Evaluation nang hindi gamit ang pangalan mo." },
   { keys: ["nakalimutan", "forgot", "lost my code", "wala akong code", "nawala"],
-    a: "Kung nakalimutan mo ang iyong anonymous code, hindi ito ma-rerecover dito sa site mismo — walang account system na nakaka-reset nito. Sabihin sa iyong researcher/instructor para makuha ulit ang code na ibinigay sa iyo sa consent form." },
+    a: "Kung nakalimutan mo ang iyong anonymous code, hindi ito ma-rerecover dito sa site mismo, walang account system na nakaka-reset nito. Sabihin sa iyong researcher/instructor para makuha ulit ang code na ibinigay sa iyo sa consent form." },
   { keys: ["decision tree", "gagamit ba ako", "pwede ba gumamit", "allowed ba", "payag ba"],
     a: "Tingnan ang AI Use Decision Tree sa Module 2 (Responsible Use). Apat na tanong ang gabay: (1) pinapayagan ba ito ng instructor, (2) ano ang gagamitin mo sa AI, (3) kaya mo bang i-verify o ipaliwanag ang output, at (4) kailangan bang idisclose. Dalawa o higit na 'red flag' = kumonsulta muna sa instructor." },
   { keys: ["hallucination", "totoo ba", "paano malalaman kung mali", "mali ba"],
-    a: "Ang AI hallucination ay kapag gumawa ang AI ng impormasyong mali o hindi totoo pero mukhang kumpiyansa — tinatalakay ito sa Module 3 (Fact-Check) kasama ang tatlong halimbawa (maling historical claim, gawa-gawang citation, at maling security advice). Palaging i-cross-check sa credible source bago mo gamitin." },
+    a: "Ang AI hallucination ay kapag gumawa ang AI ng impormasyong mali o hindi totoo pero mukhang kumpiyansa, at tinatalakay ito sa Module 3 (Fact-Check) kasama ang tatlong halimbawa (maling historical claim, gawa-gawang citation, at maling security advice). Palaging i-cross-check sa credible source bago mo gamitin." },
   { keys: ["privacy", "safe ba", "datos", "impormasyon", "personal na detalye"],
     a: "Tingnan ang Module 4 (Privacy). Maaaring ma-store at ma-review ng kumpanya ang mga isinusulat mo sa isang AI chatbot, kaya iwasan ang pagtype ng personal na detalye. Iba-iba rin ang patakaran ng bawat service, kaya tingnan ang kasalukuyang privacy policy ng partikular na ginagamit mong AI." },
   { keys: ["my ai rules", "i-save", "save my rules", "paano gawin ang rules"],
     a: "Sa My AI Rules tool, isulat mo ang sarili mong gabay sa paggamit ng AI, tapos pindutin ang Save. Naka-log ang bawat pag-save bilang bagong entry (hindi na-o-overwrite), kaya makikita ang una mong bersyon at ang binago mo bago ang posttest." },
   { keys: ["ai tools", "aling ai", "recommend", "tool na gagamitin", "anong ai"],
-    a: "Puntahan ang AI Tools directory — nakagrupo ito by category (Writing/Research, Coding, Productivity, Creative, Career/Business) na may maikling best-for at pag-iingat bawat isa. Palaging i-check ang current documentation ng provider dahil mabilis magbago ang features nila." },
+    a: "Puntahan ang AI Tools directory, nakagrupo ito by category (Writing/Research, Coding, Productivity, Creative, Career/Business) na may maikling best-for at pag-iingat bawat isa. Palaging i-check ang current documentation ng provider dahil mabilis magbago ang features nila." },
   { keys: ["form a", "form b", "pretest", "posttest", "test", "quiz"],
-    a: "Form A ang ginagamit sa pretest (Week 1) at Form B naman sa posttest (Week 4) — magkaiba ang senaryo pero pareho ang tinitignan na competencies, para hindi lang basta pag-alala sa sagot ang masusukat." },
+    a: "Form A ang ginagamit sa pretest (Week 1) at Form B naman sa posttest (Week 4), magkaiba ang senaryo pero pareho ang tinitignan na competencies, para hindi lang basta pag-alala sa sagot ang masusukat." },
   { keys: ["usability", "evaluation", "feedback sa site", "ano sa site"],
-    a: "May Usability Evaluation na sasagutan mo sa Week 4, pagkatapos ng posttest — tungkol ito sa kadalian ng navigation, pagkabasa, Taglish clarity, bilis ng loading, at kung gaano ka-useful ang mga module." },
+    a: "May Usability Evaluation na sasagutan mo sa Week 4, pagkatapos ng posttest, tungkol ito sa kadalian ng navigation, pagkabasa, Taglish clarity, bilis ng loading, at kung gaano ka-useful ang mga module." },
   { keys: ["mabagal", "slow", "internet", "loading", "connection", "walang net"],
-    a: "Dinisenyo ang AIwise para gumana kahit mabagal ang mobile data — walang malalaking larawan o video sa mga module. Kung nag-refresh ka, hindi ka mawawala sa session — naaalala pa rin ng site ang code mo habang bukas ang tab." },
+    a: "Dinisenyo ang AIwise para gumana kahit mabagal ang mobile data at walang malalaking larawan o video sa mga module. Kung nag-refresh ka, hindi ka mawawala sa session, naaalala pa rin ng site ang code mo habang bukas ang tab." },
   { keys: ["responsible use", "paggamit ng ai", "etikal", "tamang gamit"],
     a: "Tingnan ang Module 2 (Responsible Use) para sa mga halimbawa ng tama at maling paggamit ng AI sa academic settings, kasama ang AI Use Decision Tree." },
   { keys: ["fact check", "paano i-verify", "verify", "i-check"],
-    a: "Tingnan ang Module 3 (Fact-Check) — dito mo mapapraktis ang pagtukoy ng mga senaryo kung saan mali o gawa-gawa lang ang sagot ng AI, at paano ito i-verify." },
+    a: "Tingnan ang Module 3 (Fact-Check) dito mo mapapraktis ang pagtukoy ng mga senaryo kung saan mali o gawa-gawa lang ang sagot ng AI, at paano ito i-verify." },
   { keys: ["interview", "tatanungin", "kausapin", "usap"],
-    a: "May maikling interview sa Week 4 na may tatlong open-ended na tanong tungkol sa karanasan mo gamit ang mga module — walang tamang o maling sagot dito." },
+    a: "May maikling interview sa Week 4 na may tatlong open-ended na tanong tungkol sa karanasan mo gamit ang mga module, walang tamang o maling sagot dito." },
   { keys: ["baguhin", "i-edit", "pwede ko bang palitan", "revise", "ulitin ang rules"],
     a: "Oo, pwede mong baguhin ang My AI Rules mo anumang oras bago ang posttest. Naka-log ang bawat pag-save bilang bagong entry, kaya makikita pa rin ang una mong bersyon kasama ang binago mo." },
   { keys: ["kontak", "contact", "sino ang tatanungin", "may problema", "tulong"],
@@ -193,7 +193,7 @@ function matchHelp(question) {
     if (score > bestScore) { bestScore = score; best = entry; }
   }
   if (best && bestScore > 0) return best.a;
-  return "Wala akong direktang sagot dito na tugma sa tanong mo. Subukan mong tingnan ang kaugnay na module (Home page may listahan), o itanong nang direkta sa iyong instructor/researcher — ito kasi ay simpleng guide lang batay sa laman ng site, hindi totoong AI.";
+  return "Wala akong direktang sagot dito na tugma sa tanong mo. Subukan mong tingnan ang kaugnay na module (Home page may listahan), o itanong nang direkta sa iyong instructor/researcher, ito kasi ay simpleng guide lamang batay sa nilalaman ng site, at hindi totoong AI.";
 }
 
 function askHelp(preset) {
