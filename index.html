@@ -38,9 +38,13 @@
     <span class="eyebrow">For CCIS IT students at University of Antique</span>
     <h1>Use AI with confidence — not by accident.</h1>
     <p>AIwise is a free, four-module guide to using generative AI responsibly in your coursework. Built in Taglish, made for slow connections, based on real student situations.</p>
+    <span class="week1-label">Before you start (Week 1):</span>
     <div class="cta-row">
+      <button class="btn btn-secondary" onclick="goToForm('pretest')">Take the pretest</button>
+      <button class="btn btn-secondary" onclick="goToForm('responsibleUse')">Responsible Use Scenarios</button>
+    </div>
+    <div class="cta-row" style="margin-top:12px;">
       <button class="btn btn-primary" onclick="showSection('module-1')">Start Module 1: What is AI?</button>
-      <button class="btn btn-secondary" onclick="goToForm('pretest')">Take the pretest first</button>
     </div>
   </header>
 
@@ -56,36 +60,38 @@
     <div class="section-label">Four short modules</div>
     <h2>Pick up where you left off</h2>
 
-    <button class="module-card" onclick="showSection('module-1')">
-      <span class="module-num">01</span>
-      <div><h3>What is AI?</h3><p>How generative AI actually generates answers in plain Taglish, no jargon.</p></div>
-    </button>
+    <div class="module-grid">
+      <button class="module-card" onclick="showSection('module-1')">
+        <span class="module-num">01</span>
+        <div><h3>What is AI?</h3><p>How generative AI actually generates answers in plain Taglish, no jargon.</p></div>
+      </button>
 
-    <button class="module-card" onclick="showSection('module-2')">
-      <span class="module-num">02</span>
-      <div><h3>Responsible Use</h3><p>What counts as fair use in coursework, and where the line actually is.</p></div>
-    </button>
+      <button class="module-card" onclick="showSection('module-2')">
+        <span class="module-num">02</span>
+        <div><h3>Responsible Use</h3><p>What counts as fair use in coursework, and where the line actually is.</p></div>
+      </button>
 
-    <button class="module-card" onclick="showSection('module-3')">
-      <span class="module-num">03</span>
-      <div><h3>Fact-Check</h3><p>Practice catching AI mistakes before they end up in your paper.</p></div>
-    </button>
+      <button class="module-card" onclick="showSection('module-3')">
+        <span class="module-num">03</span>
+        <div><h3>Fact-Check</h3><p>Practice catching AI mistakes before they end up in your paper.</p></div>
+      </button>
 
-    <button class="module-card" onclick="showSection('module-4')">
-      <span class="module-num">04</span>
-      <div><h3>Privacy</h3><p>What happens to what you type into a chatbot, and how to protect it.</p></div>
-    </button>
+      <button class="module-card" onclick="showSection('module-4')">
+        <span class="module-num">04</span>
+        <div><h3>Privacy</h3><p>What happens to what you type into a chatbot, and how to protect it.</p></div>
+      </button>
 
-    <button class="module-card" onclick="showSection('ai-rules')" style="border-color: var(--gold);">
-      <span class="module-num" style="color: var(--gold);">✓</span>
-      <div><h3>My AI Rules</h3><p>After the four modules: write your own personal AI-use guidelines.</p></div>
-    </button>
+      <button class="module-card" onclick="showSection('ai-rules')" style="border-color: var(--gold);">
+        <span class="module-num" style="color: var(--gold);">✓</span>
+        <div><h3>My AI Rules</h3><p>After the four modules: write your own personal AI-use guidelines.</p></div>
+      </button>
+    </div>
   </section>
 
   <section class="why">
     <div class="why-card">
       <h2>Why this exists</h2>
-      <p>Most AI guidance wasn't written for Filipino students on limited data plans, switching between English and Filipino mid-sentence. AIwise was built specifically for that reality — and it only works because students like you help test it.</p>
+      <p>Most AI guidance wasn't written for Filipino students on limited data plans, switching between English and Filipino mid-sentence. AIwise was built specifically for that reality, and it only works because students like you help test it.</p>
     </div>
   </section>
 
@@ -243,14 +249,21 @@
   <textarea class="rules-input" id="rulesInput" placeholder="e.g. 1. I will always fact-check anything AI gives me before using it in an assignment.&#10;2. I won't paste my classmates' work or personal info into a chatbot.&#10;3 ..."></textarea>
   <button class="btn btn-teal" id="saveRulesBtn" style="width:100%;">Save my AI rules</button>
   <div class="save-status" id="saveStatus"></div>
-  <div class="info-box" style="margin-top:20px;">Finished everything? <button class="footlink" style="color:var(--teal); font-weight:700;" onclick="goToForm('posttest')">Take the posttest</button></div>
+  <div class="info-box" style="margin-top:20px;">
+    <strong>Week 4 wrap-up:</strong> After revising and re-saving your rules above, complete these to finish the study:
+    <div class="nav-buttons" style="margin-top:10px;">
+      <button class="btn btn-outline-teal" onclick="goToForm('posttest')">Take the posttest</button>
+      <button class="btn btn-outline-teal" onclick="goToForm('responsibleUse')">Responsible Use Scenarios</button>
+    </div>
+    <p style="margin:10px 0 0; font-size:13px; color:var(--muted);">Your researcher will also reach out separately to schedule your short Week 4 interview.</p>
+  </div>
 </div>
 
 <div class="page-section" id="ai-tools">
   <button class="back-btn" onclick="showSection('home')">Back to home</button>
   <div class="section-label">Reference</div>
   <h2>AI Tools directory</h2>
-  <div class="body-copy"><p>Mga kategorya ng AI tools na madalas gamitin ng IT students — iilan lang na halimbawa bawat kategorya, kasama ang pinaka-magandang gamit at ang dapat pag-ingatan.</p></div>
+  <div class="body-copy"><p>Mga kategorya ng AI tools na madalas gamitin ng IT students at iilan lang na halimbawa bawat kategorya, kasama ang pinaka-magandang gamit at ang dapat pag-ingatan.</p></div>
 
   <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Writing &amp; Research Assistants</h3>
   <div class="ai-tool-card"><h4>ChatGPT</h4><p><strong>Best for:</strong> brainstorming logic, explaining complex concepts, debugging errors, and drafting documentation. <em>Pero</em> mag-ingat kasi pwede siyang mag-hallucinate ng maling solution o magbigay ng outdated syntax, kaya always i-test maigi ang code.</p></div>
@@ -283,8 +296,8 @@
   <h2>About this study</h2>
   <div class="body-copy">
     <p>AIwise is part of an undergraduate research study on AI literacy among IT students in the College of Computer and Information Science (CCIS) at the University of Antique. The study looks at whether using this website changes students' AI literacy knowledge and their self-reported habits around responsible AI use, through a four-week pretest-posttest design.</p>
-    <p>This site was designed and built by [Your Name], an IT student at CCIS, University of Antique, under the guidance of [Adviser's Name]. Participation in the associated research study is entirely voluntary — see the Consent form for full details on what's involved and how your data is protected.</p>
-    <p>Questions about the study? Reach [Your Name] at [your email/contact].</p>
+    <p>This site was designed and built by Hanna Mae Domingo, an IT student at CCIS, University of Antique. Participation in the associated research study is entirely voluntary, see the Consent form for full details on what's involved and how your data is protected.</p>
+    <p>Questions about the study? Please reach out to the researcher for more info.</p>
   </div>
 </div>
 
@@ -312,5 +325,4 @@
 
 </body>
 </html>
-
 
