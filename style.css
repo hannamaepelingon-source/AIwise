@@ -137,6 +137,16 @@ h1 {
 
 .cta-row { display: flex; flex-direction: column; gap: 10px; }
 
+.week1-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
 .btn {
   display: inline-block;
   text-align: center;
@@ -357,3 +367,56 @@ textarea.rules-input:focus { border-color: var(--teal); outline: none; }
 .code-gate-card input:focus { border-color: var(--teal); outline: none; }
 .code-gate-card .error { color: #B5432B; font-size: 13px; margin: -6px 0 12px; display: none; }
 .code-gate-card .error.show { display: block; }
+
+/* ============================================================
+   RESPONSIVE — mobile-first base above stays the default (phones).
+   These queries add tablet/desktop layout only; nothing below
+   changes colors, fonts, spacing tokens, or content order.
+   ============================================================ */
+
+.module-grid { display: flex; flex-direction: column; }
+
+@media (min-width: 768px) {
+  /* Desktop nav: show links inline, hide the mobile hamburger */
+  .menu-btn { display: none; }
+  .navlinks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+  }
+  .navlinks button.navlink {
+    width: auto;
+    border-bottom: none;
+    padding: 8px 10px;
+    font-size: 13.5px;
+  }
+  nav { flex-wrap: wrap; gap: 10px 20px; }
+
+  /* Hero CTA buttons sit side by side instead of stacked */
+  .cta-row { flex-direction: row; }
+  .cta-row .btn { width: auto; }
+
+  /* Give content more breathing room than the 640px mobile cap */
+  .page-section { max-width: 720px; }
+
+  h1 { font-size: 38px; }
+
+  /* Module cards: 2-column grid */
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .module-card { margin-bottom: 0; }
+}
+
+@media (min-width: 1024px) {
+  .page-section { max-width: 960px; }
+
+  h1 { font-size: 44px; }
+
+  /* Module cards: 3-column grid at wider desktop widths */
+  .module-grid { grid-template-columns: repeat(3, 1fr); }
+}
