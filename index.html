@@ -10,11 +10,15 @@
 
 <div class="code-gate" id="codeGate">
   <div class="code-gate-card">
-    <h2>Enter your anonymous code</h2>
-    <p>This is a research matching identifier, not a login or password and no account is created and nothing is authenticated. Enter the exact anonymous code your researcher gave you at consent, and don't create your own version. It links your pretest, posttest, Responsible Use Scenarios, My AI Rules, and Usability Evaluation together, without your name.</p>
-    <input type="text" id="codeInput" placeholder="e.g. AIWISE-07" autocomplete="off" />
-    <div class="error" id="codeError">Please enter your code to continue.</div>
+    <h2>Ilagay ang iyong code</h2>
+    <p>Ito ang code na ibinigay ng researcher. Hindi ito password.</p>
+    <input type="text" id="codeInput" placeholder="hal. AIWISE-07" aria-label="Anonymous code" autocomplete="off" autocapitalize="characters" maxlength="30" />
+    <div class="error" id="codeError" role="alert">Ilagay ang code mo para magpatuloy.</div>
     <button class="btn btn-primary" id="codeSubmit" style="width:100%">Continue</button>
+    <details class="gate-why">
+      <summary>Bakit may code?</summary>
+      <p>Iniuugnay nito ang pretest, posttest, Responsible Use Survey, My AI Rules at Usability Evaluation mo nang walang pangalan. Walang account na ginagawa.</p>
+    </details>
   </div>
 </div>
 
@@ -38,80 +42,96 @@
     <span class="eyebrow">For CCIS IT students at University of Antique</span>
     <h1>Use AI with confidence — not by accident.</h1>
     <p>AIwise is a free, four-module guide to using generative AI responsibly in your coursework. Built in Taglish, made for slow connections, based on real student situations.</p>
-    <span class="week1-label">Before you start (Week 1):</span>
     <div class="cta-row">
-      <button class="btn btn-secondary" onclick="goToForm('pretest')">Take the pretest</button>
-      <button class="btn btn-secondary" onclick="goToForm('responsibleUse')">Responsible Use Scenarios</button>
-    </div>
-    <div class="cta-row" style="margin-top:12px;">
-      <button class="btn btn-primary" onclick="showSection('module-1')">Start Module 1: What is AI?</button>
+      <button class="btn btn-primary" onclick="openStep('step-w1', true)">Open Week 1 steps</button>
+      <button class="btn btn-secondary" onclick="showSection('module-1')">Start Module 1: What is AI?</button>
     </div>
   </header>
 
+
   <div class="trust" style="margin: 0 -20px;">
     <span>🔒</span>
-    <span>
-      <strong>How this works:</strong> Your anonymous code is a research matching identifier, not a login, and it links your pretest, posttest, Responsible Use Scenarios, My AI Rules, and Usability Evaluation entries without using your name. Form and survey responses go through Google Forms, and My AI Rules entries are logged in Firebase; both are described in your consent form.
-      <span class="code-note" id="codeStatus"></span>
-    </span>
+    <span><strong id="codeStatus"></strong> Your code links your answers without your name. Forms use Google Forms and My AI Rules is saved in Firebase. <button class="inline-link" onclick="openAbout('aboutData')">Learn more</button></span>
   </div>
 
   <section class="modules" id="modules">
     <div class="section-label">Four short modules</div>
-    <h2>Pick up where you left off</h2>
+    <p class="progress-summary" id="progressSummary"></p>
 
-    <div class="module-grid">
-      <button class="module-card" onclick="showSection('module-1')">
-        <span class="module-num">01</span>
-        <div><h3>What is AI?</h3><p>How generative AI actually generates answers in plain Taglish, no jargon.</p></div>
-      </button>
+    <button class="module-card" onclick="showSection('module-1')">
+      <span class="module-num">01</span>
+      <div><h3>What is AI?</h3><p>How generative AI actually generates answers in plain Taglish, no jargon.</p></div>
+      <span class="module-badge" data-badge="1"></span>
+    </button>
 
-      <button class="module-card" onclick="showSection('module-2')">
-        <span class="module-num">02</span>
-        <div><h3>Responsible Use</h3><p>What counts as fair use in coursework, and where the line actually is.</p></div>
-      </button>
+    <button class="module-card" onclick="showSection('module-2')">
+      <span class="module-num">02</span>
+      <div><h3>Responsible Use</h3><p>What counts as fair use in coursework, and where the line actually is.</p></div>
+      <span class="module-badge" data-badge="2"></span>
+    </button>
 
-      <button class="module-card" onclick="showSection('module-3')">
-        <span class="module-num">03</span>
-        <div><h3>Fact-Check</h3><p>Practice catching AI mistakes before they end up in your paper.</p></div>
-      </button>
+    <button class="module-card" onclick="showSection('module-3')">
+      <span class="module-num">03</span>
+      <div><h3>Fact-Check</h3><p>Practice catching AI mistakes before they end up in your paper.</p></div>
+      <span class="module-badge" data-badge="3"></span>
+    </button>
 
-      <button class="module-card" onclick="showSection('module-4')">
-        <span class="module-num">04</span>
-        <div><h3>Privacy</h3><p>What happens to what you type into a chatbot, and how to protect it.</p></div>
-      </button>
+    <button class="module-card" onclick="showSection('module-4')">
+      <span class="module-num">04</span>
+      <div><h3>Privacy</h3><p>What happens to what you type into a chatbot, and how to protect it.</p></div>
+      <span class="module-badge" data-badge="4"></span>
+    </button>
 
-      <button class="module-card" onclick="showSection('ai-rules')" style="border-color: var(--gold);">
-        <span class="module-num" style="color: var(--gold);">✓</span>
-        <div><h3>My AI Rules</h3><p>After the four modules: write your own personal AI-use guidelines.</p></div>
-      </button>
-    </div>
+    <button class="module-card" onclick="showSection('ai-rules')" style="border-color: var(--gold);">
+      <span class="module-num" style="color: var(--gold-text);">✓</span>
+      <div><h3>My AI Rules</h3><p>After the four modules: write your own personal AI-use guidelines.</p></div>
+    </button>
   </section>
 
-  <section class="why">
-    <div class="why-card">
-      <h2>Why this exists</h2>
-      <p>Most AI guidance wasn't written for Filipino students on limited data plans, switching between English and Filipino mid-sentence. AIwise was built specifically for that reality, and it only works because students like you help test it.</p>
-    </div>
+  <section class="modules" id="studySteps">
+    <div class="section-label">Study steps</div>
+    <p class="progress-summary">Your researcher tells you when each week starts.</p>
+
+    <details class="step-row" id="step-w1">
+      <summary><span>Week 1</span><span class="step-meta">2 forms</span></summary>
+      <div class="step-body step-links">
+        <button class="btn btn-outline-teal" onclick="goToForm('pretest')">Pretest</button>
+        <button class="btn btn-outline-teal" onclick="goToForm('responsibleUseWeek1')">Responsible Use Survey</button>
+      </div>
+    </details>
+
+    <details class="step-row" id="step-w23">
+      <summary><span>Weeks 2–3</span><span class="step-meta" id="metaW23">0 of 4 modules</span></summary>
+      <div class="step-body step-links">
+        <button class="btn btn-outline-teal" onclick="showSection('ai-rules')">My AI Rules</button>
+      </div>
+    </details>
+
+    <details class="step-row" id="week4Group">
+      <summary><span>Week 4</span><span class="step-meta" id="metaW4">4 steps</span></summary>
+      <div class="step-body step-links">
+        <p class="step-note" id="week4Note"></p>
+        <button class="btn btn-outline-teal" onclick="goToForm('posttest')">Posttest</button>
+        <button class="btn btn-outline-teal" onclick="goToForm('responsibleUseWeek4')">Responsible Use Survey</button>
+        <button class="btn btn-outline-teal" onclick="goToForm('usability')">Usability Evaluation</button>
+        <button class="btn btn-outline-teal" onclick="showSection('ai-rules')">Revise My AI Rules</button>
+      </div>
+    </details>
   </section>
 
   <footer>
     <div class="foot-links">
       <button class="footlink" onclick="showSection('ai-tools')">AI Tools directory</button>
       <button class="footlink" onclick="showSection('about')">About this study</button>
-      <button class="footlink" onclick="goToForm('consent')">Consent form</button>
-      <button class="footlink" onclick="goToForm('responsibleUse')">Responsible Use Survey</button>
-      <button class="footlink" onclick="goToForm('posttest')">Posttest</button>
-      <button class="footlink" onclick="goToForm('usability')">Usability Evaluation</button>
       <button class="footlink" onclick="showSection('about')">Contact the researcher</button>
     </div>
-    <p class="fine">AIwise is part of an undergraduate research study. Participation is voluntary, and you may stop at any time without penalty. See the consent form for full details on what data is collected and how it's used.</p>
+    <p class="fine">AIwise is part of an undergraduate research study. Participation is voluntary, and you may stop at any time without penalty. See the consent form you signed (ask your researcher for a copy) for full details on what data is collected and how it's used.</p>
   </footer>
 </div>
 
 <div class="page-section" id="module-1">
   <button class="back-btn" onclick="showSection('home')">Back to modules</button>
-  <div class="module-progress"><span class="done"></span><span></span><span></span><span></span></div>
+  <div class="module-progress" data-current="1" role="img" aria-label="Module progress"><span></span><span></span><span></span><span></span></div>
   <div class="section-label">Module 01</div>
   <h2>What is AI?</h2>
   <div class="body-copy">
@@ -121,13 +141,13 @@
   </div>
   <div class="nav-buttons">
     <button class="btn btn-secondary" onclick="showSection('home')">Back</button>
-    <button class="btn btn-primary" onclick="showSection('module-2')">Next: Responsible Use</button>
+    <button class="btn btn-primary" onclick="markDone(1); showSection('module-2')">Next: Responsible Use</button>
   </div>
 </div>
 
 <div class="page-section" id="module-2">
   <button class="back-btn" onclick="showSection('home')">Back to modules</button>
-  <div class="module-progress"><span class="done"></span><span class="done"></span><span></span><span></span></div>
+  <div class="module-progress" data-current="2" role="img" aria-label="Module progress"><span></span><span></span><span></span><span></span></div>
   <div class="section-label">Module 02</div>
   <h2>Responsible Use</h2>
   <div class="body-copy">
@@ -169,13 +189,13 @@
   </div>
   <div class="nav-buttons">
     <button class="btn btn-secondary" onclick="showSection('module-1')">Back</button>
-    <button class="btn btn-primary" onclick="showSection('module-3')">Next: Fact-Check</button>
+    <button class="btn btn-primary" onclick="markDone(2); showSection('module-3')">Next: Fact-Check</button>
   </div>
 </div>
 
 <div class="page-section" id="module-3">
   <button class="back-btn" onclick="showSection('home')">Back to modules</button>
-  <div class="module-progress"><span class="done"></span><span class="done"></span><span class="done"></span><span></span></div>
+  <div class="module-progress" data-current="3" role="img" aria-label="Module progress"><span></span><span></span><span></span><span></span></div>
   <div class="section-label">Module 03</div>
   <h2>Fact-Check</h2>
   <div class="body-copy">
@@ -209,13 +229,13 @@
   </div>
   <div class="nav-buttons">
     <button class="btn btn-secondary" onclick="showSection('module-2')">Back</button>
-    <button class="btn btn-primary" onclick="showSection('module-4')">Next: Privacy</button>
+    <button class="btn btn-primary" onclick="markDone(3); showSection('module-4')">Next: Privacy</button>
   </div>
 </div>
 
 <div class="page-section" id="module-4">
   <button class="back-btn" onclick="showSection('home')">Back to modules</button>
-  <div class="module-progress"><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span></div>
+  <div class="module-progress" data-current="4" role="img" aria-label="Module progress"><span></span><span></span><span></span><span></span></div>
   <div class="section-label">Module 04</div>
   <h2>Privacy</h2>
   <div class="body-copy">
@@ -235,7 +255,7 @@
   </div>
   <div class="nav-buttons">
     <button class="btn btn-secondary" onclick="showSection('module-3')">Back</button>
-    <button class="btn btn-primary" onclick="showSection('ai-rules')">Finish: My AI Rules</button>
+    <button class="btn btn-primary" onclick="markDone(4); showSection('ai-rules')">Finish: My AI Rules</button>
   </div>
 </div>
 
@@ -246,16 +266,19 @@
   <div class="body-copy">
     <p>Now that you've been through all four modules, write 3–5 personal rules for how you'll use AI tools in your coursework going forward. This is saved under your anonymous code, not graded, and not shared with your professors.</p>
   </div>
+  <p class="field-hint">Huwag maglagay ng pangalan o iba pang personal na detalye (sarili man o ng iba) sa rules mo.</p>
+  <p class="field-hint" id="restoreNote"></p>
   <textarea class="rules-input" id="rulesInput" placeholder="e.g. 1. I will always fact-check anything AI gives me before using it in an assignment.&#10;2. I won't paste my classmates' work or personal info into a chatbot.&#10;3 ..."></textarea>
-  <button class="btn btn-teal" id="saveRulesBtn" style="width:100%;">Save my AI rules</button>
+  <button class="btn btn-primary" id="saveRulesBtn" style="width:100%;">Save my AI rules</button>
   <div class="save-status" id="saveStatus"></div>
-  <div class="info-box" style="margin-top:20px;">
-    <strong>Week 4 wrap-up:</strong> After revising and re-saving your rules above, complete these to finish the study:
-    <div class="nav-buttons" style="margin-top:10px;">
-      <button class="btn btn-outline-teal" onclick="goToForm('posttest')">Take the posttest</button>
-      <button class="btn btn-outline-teal" onclick="goToForm('responsibleUse')">Responsible Use Scenarios</button>
+  <div class="step-group" style="margin-top:20px;">
+    <h3>Week 4 steps</h3>
+    <p>Finished everything? Complete these, together with your revised rules above.</p>
+    <div class="step-links">
+      <button class="btn btn-outline-teal" onclick="goToForm('posttest')">Posttest (Form B)</button>
+      <button class="btn btn-outline-teal" onclick="goToForm('responsibleUseWeek4')">Responsible Use Survey (Week 4)</button>
+      <button class="btn btn-outline-teal" onclick="goToForm('usability')">Usability Evaluation</button>
     </div>
-    <p style="margin:10px 0 0; font-size:13px; color:var(--muted);">Your researcher will also reach out separately to schedule your short Week 4 interview.</p>
   </div>
 </div>
 
@@ -263,27 +286,27 @@
   <button class="back-btn" onclick="showSection('home')">Back to home</button>
   <div class="section-label">Reference</div>
   <h2>AI Tools directory</h2>
-  <div class="body-copy"><p>Mga kategorya ng AI tools na madalas gamitin ng IT students at iilan lang na halimbawa bawat kategorya, kasama ang pinaka-magandang gamit at ang dapat pag-ingatan.</p></div>
+  <div class="body-copy"><p>Mga kategorya ng AI tools na madalas gamitin ng IT students — iilan lang na halimbawa bawat kategorya, kasama ang pinaka-magandang gamit at ang dapat pag-ingatan.</p></div>
 
-  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Writing &amp; Research Assistants</h3>
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal-text);">Writing &amp; Research Assistants</h3>
   <div class="ai-tool-card"><h4>ChatGPT</h4><p><strong>Best for:</strong> brainstorming logic, explaining complex concepts, debugging errors, and drafting documentation. <em>Pero</em> mag-ingat kasi pwede siyang mag-hallucinate ng maling solution o magbigay ng outdated syntax, kaya always i-test maigi ang code.</p></div>
   <div class="ai-tool-card"><h4>Claude</h4><p><strong>Best for:</strong> long-context understanding, reading whole thesis/capstone papers, and safe, structured explanations. <em>Pero</em> mas conservative siya at minsan nagre-refuse sa coding tasks na kaya naman, kaya i-rephrase mo lang yung prompt nang maayos.</p></div>
   <div class="ai-tool-card"><h4>Perplexity</h4><p><strong>Best for:</strong> real-time research with cited sources and quick literature review. <em>Pero</em> hindi lahat ng sources ay credible at minsan outdated yung link, kaya i-verify mo pa rin sa original site.</p></div>
 
-  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Coding Assistants</h3>
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal-text);">Coding Assistants</h3>
   <div class="ai-tool-card"><h4>GitHub Copilot</h4><p><strong>Best for:</strong> real-time code auto-completion and boilerplate generation directly inside your IDE. <em>Pero</em> minsan nagbibigay siya ng insecure patterns o copyrighted logic, kaya i-review mo lahat ng snippets at never mag-input ng API keys or credentials.</p></div>
   <div class="ai-tool-card"><h4>Cursor</h4><p><strong>Best for:</strong> AI-native coding IDE and full-project refactoring. <em>Pero</em> mabilis maubos yung fast requests at pwede niyang baguhin buong codebase pag di binantayan, kaya always check yung diff bago i-accept.</p></div>
 
-  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Productivity &amp; Communication</h3>
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal-text);">Productivity &amp; Communication</h3>
   <div class="ai-tool-card"><h4>Grammarly (GrammarlyGO)</h4><p><strong>Best for:</strong> refactoring tone, polishing technical write-ups, and drafting clear peer communications. <em>Pero</em> pwede niyang i-flatten yung importanteng technical jargon o ma-misinterpret yung technical intent, kaya i-manual review mo lahat ng suggested edits.</p></div>
   <div class="ai-tool-card"><h4>Gemini</h4><p><strong>Best for:</strong> multimodal reasoning, analyzing images/code/docs at the same time, and Google Workspace integration. <em>Pero</em> minsan inconsistent yung citation at nagha-hallucinate din ng sources, kaya i-double check mo yung facts bago gamitin.</p></div>
 
-  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Creative &amp; App-Building Tools</h3>
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal-text);">Creative &amp; App-Building Tools</h3>
   <div class="ai-tool-card"><h4>Higgsfield</h4><p><strong>Best for:</strong> AI video generation and motion control for creative capstone demos. <em>Pero</em> may limit sa free credits at minsan inconsistent yung character movement, kaya planuhin mo yung prompts para di masayang credits.</p></div>
   <div class="ai-tool-card"><h4>Lovable</h4><p><strong>Best for:</strong> turning prompts into full-stack websites instantly without coding from scratch. <em>Pero</em> messy yung generated code at mahirap i-maintain long-term, kaya pang-prototype lang, hindi pang-final deployment.</p></div>
   <div class="ai-tool-card"><h4>Emergent</h4><p><strong>Best for:</strong> building AI agents and automating workflows. <em>Pero</em> complex yung setup at may learning curve sa chaining, kaya start ka muna sa simple workflow bago mag-advanced.</p></div>
 
-  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal);">Career &amp; Business Tools</h3>
+  <h3 style="font-size:15px; margin: 18px 0 8px; color:var(--teal-text);">Career &amp; Business Tools</h3>
   <div class="ai-tool-card"><h4>Zety (Resume AI)</h4><p><strong>Best for:</strong> auto-generating ATS-friendly resumes and application letters for OJT. <em>Pero</em> generic yung output pag di mo in-edit, kaya i-customize mo pa rin para di halatang AI.</p></div>
   <div class="ai-tool-card"><h4>Shopify Magic / Shopify AI</h4><p><strong>Best for:</strong> auto-generating product descriptions, store setup, and e-commerce content. <em>Pero</em> generic yung copy at hindi optimized for local market, kaya i-edit mo pa rin para mag-fit sa target customers mo.</p></div>
 
@@ -296,26 +319,35 @@
   <h2>About this study</h2>
   <div class="body-copy">
     <p>AIwise is part of an undergraduate research study on AI literacy among IT students in the College of Computer and Information Science (CCIS) at the University of Antique. The study looks at whether using this website changes students' AI literacy knowledge and their self-reported habits around responsible AI use, through a four-week pretest-posttest design.</p>
-    <p>This site was designed and built by Hanna Mae Domingo, an IT student at CCIS, University of Antique. Participation in the associated research study is entirely voluntary, see the Consent form for full details on what's involved and how your data is protected.</p>
-    <p>Questions about the study? Please reach out to the researcher for more info.</p>
+    <p><strong>Why AIwise exists.</strong> Most AI guidance wasn't written for Filipino students on limited data plans, switching between English and Filipino mid-sentence. AIwise was built specifically for that reality, and it only works because students like you help test it.</p>
+    <p>This site was designed and built by [Your Name], an IT student at CCIS, University of Antique, under the guidance of [Adviser's Name]. Participation in the associated research study is entirely voluntary — see the consent form you signed (ask the researcher for a copy) for full details on what's involved and how your data is protected.</p>
+    <p id="aboutContact">Questions about the study? Reach [Your Name] at [your email/contact].</p>
+  </div>
+  <div class="info-box" id="aboutData">
+    <h3>How your data is handled</h3>
+    <p>Your anonymous code is a research matching identifier, not a login. It links your pretest, posttest, Responsible Use Survey, My AI Rules, and Usability Evaluation entries without using your name.</p>
+    <p>Form and survey responses go through Google Forms, and My AI Rules entries are logged in Firebase. Both are described in the consent form you signed (ask your researcher for a copy).</p>
   </div>
 </div>
 
-<!-- Help Assistant: a scripted FAQ helper, not a real AI chatbot. It keyword-matches
-     your question against AIwise's own module content and answers only from that —
-     no API calls, no external AI model, no data sent or stored anywhere. -->
+<!-- Help Assistant: a scripted FAQ helper, not a real AI chatbot. Students tap a topic
+     and then a question (typing is optional and keyword-matched) and it answers only from
+     AIwise's own content — no API calls, no external AI model, no data sent or stored anywhere. -->
 <button class="help-fab" id="helpFab" aria-label="Open help assistant" onclick="toggleHelp()">💬</button>
 <div class="help-panel hidden" id="helpPanel">
   <div class="help-panel-header">
     <span>AIwise Help</span>
-    <button onclick="toggleHelp()" aria-label="Close">✕</button>
+    <div class="help-header-actions">
+      <button onclick="toggleHelp()" aria-label="Close">✕</button>
+    </div>
   </div>
-  <div class="help-sub">Sagot lang ito batay sa nilalaman ng site, hindi ito totoong AI chatbot.</div>
-  <div class="help-log" id="helpLog"></div>
-  <div class="help-chips" id="helpChips"></div>
+  <div class="help-sub">Safe, private, at handang tumulong matuto</div>
+  <div class="help-log" id="helpLog" role="log" aria-live="polite"></div>
+  <div class="help-menu" id="helpMenu" role="group" aria-label="Mga paksa at tanong"></div>
   <div class="help-input-row">
-    <input type="text" id="helpInput" placeholder="Magtanong tungkol sa AIwise..." onkeydown="if(event.key==='Enter') askHelp()" />
-    <button onclick="askHelp()">Send</button>
+    <input type="text" id="helpInput" placeholder="I-type ang tanong" aria-label="I-type ang tanong mo (opsyonal)" onkeydown="if(event.key==='Enter') askHelp()" />
+    <button type="button" class="help-clear" onclick="clearHelp()" aria-label="Clear chat conversation">Clear chat</button>
+    <button type="button" class="help-send" onclick="askHelp()">Send</button>
   </div>
 </div>
 
